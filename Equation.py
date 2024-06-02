@@ -1,6 +1,11 @@
 
 def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float):
-    """
+    """ 
+    Système International d'unités (SI):
+    -
+        * Mass - Kg
+        * Weight - Newtons
+
     Base: 
     -
         * Weight = Mass * Gravity
@@ -23,6 +28,11 @@ def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float):
 
 def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
     """ 
+    Système International d'unités (SI):
+    -
+        * Height - meters
+        * Weight - Newtons 
+        
     Base:
     -
         * Joul = Weight * Height
@@ -48,15 +58,15 @@ def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
     """ 
     Système International d'unités (SI):
     -
-    * Speed by [meters per second]
-    * Time by [second]
-    * distance by [meter]
+        * Speed by [meters per second]
+        * Time by [second]
+        * distance by [meter]
 
     Base:
     -
-        * distance == Velocity * Time
-        * distance / Time == Velocity
-        * distance / Velocity == Time
+        * distance = Velocity * Time
+        * distance / Time = Velocity
+        * distance / Velocity = Time
     """
     try: 
         if Velocity == None:
@@ -71,7 +81,6 @@ def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
 
 
 if __name__ == "__main__":
-    rooms = 4
     Height_room = 2.5
-    Weight = 30
-    print(distance_Velocity_Time(120, 2, None))
+    for i in range(0, 101):
+        print(Gravitational_Potential_Energy(Height_room * i, 10, None), i)
