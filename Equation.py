@@ -1,5 +1,5 @@
 
-def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float):
+def Mass_Gravity_Weight_3(Mass: float, Gravity: float, Weight: float):
     """ 
     Système International d'unités (SI):
     -
@@ -26,7 +26,7 @@ def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float):
         return "Need more than one known element"
 
 
-def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
+def Gravitational_Potential_Energy_3(Height: float, Weight: float, Joul: float):
     """ 
     Système International d'unités (SI):
     -
@@ -54,7 +54,7 @@ def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
         return "Need more than one known element"
 
 
-def Gravitational_Potential_Energy_WITH_MASS(Height: float, MASS: float, Gravity: float, Joul: float):
+def Gravitational_Potential_Energy_WITH_MASS_4(Height: float, MASS: float, Gravity: float, Joul: float):
     """ 
     Système International d'unités (SI):
     -
@@ -83,7 +83,7 @@ def Gravitational_Potential_Energy_WITH_MASS(Height: float, MASS: float, Gravity
         return "Need more than two known element"
 
 
-def Distance_Velocity_Time(distance: float, Velocity: float, Time: float):
+def Distance_Velocity_Time_3(distance: float, Velocity: float, Time: float):
     """ 
     Système International d'unités (SI):
     -
