@@ -43,10 +43,33 @@ def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float) ->
     except TypeError:
         return "Need more than one known element"
 
+def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
+    """ 
+    Speed in seconds
+
+    Time by second
+
+    Base:
+    --
+        * distance = Velocity * Time
+
+        * distance / Time = Velocity
+
+        * distance / Velocity = Time
+    """
+    try: 
+        if Velocity == None:
+            return ["Velocity", distance / Time]
+        elif Time == None:
+            return ["Time", distance / Velocity]
+        
+        return ["distance", Velocity * Time]
+    
+    except TypeError:
+        return "Need more than one known element"
 
 if __name__ == "__main__":
     rooms = 4
     Height_room = 2.5
     Weight = 30
-    print(Gravitational_Potential_Energy(Height_room * rooms, Weight, None))
-    print(Gravitational_Potential_Energy(Height_room * (rooms ** 3), Weight, None))
+    print(distance_Velocity_Time(None, 25, 6))
