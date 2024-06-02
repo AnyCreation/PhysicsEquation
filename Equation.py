@@ -109,7 +109,4 @@ def Distance_Velocity_Time(distance: float, Velocity: float, Time: float):
         return "Need more than one known element"
 
 
-if __name__ == "__main__":
-    Height_room = 2.5
-    for i in range(0, 101):
-        print(Gravitational_Potential_Energy_MASS(Height_room * i, 10, None), i)
+if __name__ == "__main__": pass
