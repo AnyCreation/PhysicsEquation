@@ -109,4 +109,4 @@ def Distance_Velocity_Time_3(distance: float, Velocity: float, Time: float):
         return "Need more than one known element"
 
 
-if __name__ == "__main__": pass
+if __name__ == "__main__": print(Mass_Gravity_Weight_3("Dea", "de", 23))
