@@ -1,5 +1,5 @@
 import dearpygui.dearpygui as dpg
-import Equation, Do_Func
+import Equation
 
 dpg.create_context()
 W, H = 600, 200
