@@ -31,7 +31,7 @@ def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
     Système International d'unités (SI):
     -
         * Height - meters
-        * Weight - Newtons 
+        * Weight - Newtons
         
     Base:
     -
@@ -52,6 +52,35 @@ def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
     
     except TypeError:
         return "Need more than one known element"
+
+
+def Gravitational_Potential_Energy_MASS(Height: float, MASS: float, Gravity: float, Joul: float):
+    """ 
+    Système International d'unités (SI):
+    -
+        * Height - meters
+        * MASS - Kg
+        
+    Base:
+    -
+        * Joul = MASS * Gravity * Height
+        * Joul / (Gravity * Height) = MASS
+        * Joul / (MASS * Gravity) = Height
+        * Joul / (MASS * Height) = Gravity
+
+    """
+    try: 
+        if Height == None:
+            return ["Height", Joul / (MASS * Gravity)]
+        elif MASS == None:
+            return ["MASS", Joul / (Gravity * Height)]
+        elif Gravity == None:
+            return ["Gravity", Joul / (MASS * Height)]
+
+        return ["Joul", MASS * Gravity * Height]
+    
+    except TypeError:
+        return "Need more than two known element"
 
 
 def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
@@ -83,4 +112,4 @@ def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
 if __name__ == "__main__":
     Height_room = 2.5
     for i in range(0, 101):
-        print(Gravitational_Potential_Energy(Height_room * i, 10, None), i)
+        print(Gravitational_Potential_Energy_MASS(Height_room * i, 10, None), i)
