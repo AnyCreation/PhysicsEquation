@@ -83,7 +83,7 @@ def Gravitational_Potential_Energy_MASS(Height: float, MASS: float, Gravity: flo
         return "Need more than two known element"
 
 
-def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
+def Distance_Velocity_Time(distance: float, Velocity: float, Time: float):
     """ 
     Système International d'unités (SI):
     -
