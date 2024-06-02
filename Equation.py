@@ -1,5 +1,5 @@
 
-def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float) -> list:
+def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float):
     """
     Base: 
     -
@@ -21,7 +21,7 @@ def Mass_Gravity_Weight(Mass: float, Gravity: float, Weight: float) -> list:
         return "Need more than one known element"
 
 
-def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float) -> list:
+def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float):
     """ 
     Base:
     -
@@ -45,16 +45,16 @@ def Gravitational_Potential_Energy(Height: float, Weight: float, Joul: float) ->
 
 def distance_Velocity_Time(distance: float, Velocity: float, Time: float):
     """ 
-    Speed in seconds
-
-    Time by second
+    SI:
+    -
+    * Speed in [meters per second]
+    * Time by [second]
+    * distance by [meter]
 
     Base:
-    --
+    -
         * distance = Velocity * Time
-
         * distance / Time = Velocity
-
         * distance / Velocity = Time
     """
     try: 
