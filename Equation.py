@@ -54,7 +54,7 @@ def Gravitational_Potential_Energy_3(Height: float, Weight: float, Joul: float):
         return "Need more than one known element"
 
 
-def Gravitational_Potential_Energy_WITH_MASS_4(Height: float, MASS: float, Gravity: float, Joul: float = None):
+def Gravitational_Potential_Energy_WITH_MASS_4(Height: float, MASS: float, Gravity: float, Joul: float):
     """ 
     Système International d'unités (SI):
     -
@@ -108,5 +108,8 @@ def Distance_Velocity_Time_3(distance: float, Velocity: float, Time: float):
     except TypeError:
         return "Need more than one known element"
 
+
+def Constant_Speed_3(Start_distance: float, final_distance: float, temp: float):
+    return ["meter per second", (final_distance - Start_distance) / temp]
 
 if __name__ == "__main__": print(Mass_Gravity_Weight_3("Dea", "de", 23))

@@ -16,7 +16,9 @@ EQU = {
 
 "Gravitational Potential Energy WITH MASS": lambda One, Two, Three, Four: E.Gravitational_Potential_Energy_WITH_MASS_4(One, Two, Three, Four),
 
-"Distance Velocity Time": lambda One, Two, Three: E.Distance_Velocity_Time_3(One, Two, Three)
+"Distance Velocity Time": lambda One, Two, Three: E.Distance_Velocity_Time_3(One, Two, Three),
+
+"Constant Speed": lambda One, Two, Three: E.Constant_Speed_3(One, Two, Three),
 }
 
 
@@ -74,6 +76,7 @@ def pes():
         Res = EQU[dpg.get_value(Tr)](Val[0], Val[1], Val[2], Val[3])
 
     Text.append(Res)
+    print(Res)
     if type(Res) == str:
         dpg.add_text(f"{Res}", tag=f"{Res}", before=RES, pos=[dpg.get_item_pos(RES)[0] - len(Res), dpg.get_item_pos(RES)[1] - 30],)
     else:
@@ -98,11 +101,6 @@ def count(sender):
         
         all_types.append(str(choice[dpg.get_value(Tr)][1][i]))
 
-    dpg.add_button(label="Result", tag="Res", parent="Menu", 
-                   pos=[W / 2 - (len("Result") * 5), (40 + (i * 35)) + 50], width=len("Result") * 10, 
-                   callback=pes)
-    all_types.append("Res")
-
 with dpg.window(label="Menu", tag="Menu"): 
     dpg.add_combo(list(choice), default_value="Choice", pos=[(W / 2) - (Longer_str * 5), 10], width=Longer_str * 10, callback=count)
 
@@ -111,6 +109,9 @@ with dpg.window(label="Menu", tag="Menu"):
 
     RES = dpg.add_text("Unknow : Quantity", pos=[W / 4 + len("Unknow") * 14, H / 1.5])
     dpg.bind_item_font(RES, Font())
+    dpg.add_button(label="Result", tag="Res", parent="Menu", 
+                   pos=[W / 2 - (len("Result") * 5), (H / 1.5) + 50], width=len("Result") * 10, 
+                   callback=pes)
      
     
 dpg.create_viewport(title='Menu', width=W, height=H)
