@@ -112,4 +112,7 @@ def Distance_Velocity_Time_3(distance: float, Velocity: float, Time: float):
 def Constant_Speed_3(Start_distance: float, final_distance: float, temp: float):
     return ["meter per second", (final_distance - Start_distance) / temp]
 
+def Lever_Arm_4(Mass_One: float, Arm_One: float, Mass_Two: float, Arm_Two: float):
+    return ["One, Two", ["First side:", Mass_One * Arm_One, "Second side:", Mass_Two * Arm_Two]]
+
 if __name__ == "__main__": print(Mass_Gravity_Weight_3("Dea", "de", 23))
