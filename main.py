@@ -109,8 +109,9 @@ with dpg.window(label="Menu", tag="Menu"):
 
     RES = dpg.add_text("Unknow : Quantity", pos=[W / 4 + len("Unknow") * 14, H / 1.5])
     dpg.bind_item_font(RES, Font())
+    
     dpg.add_button(label="Result", tag="Res", parent="Menu", 
-                   pos=[W / 2 - (len("Result") * 5), (H / 1.5) + 50], width=len("Result") * 10, 
+                   pos=[W / 2 - (len("Result") * 5), (H / 1.5) + 50], width=len("Result") * 10,
                    callback=pes)
      
     
