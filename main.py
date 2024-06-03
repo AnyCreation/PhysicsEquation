@@ -4,6 +4,11 @@ import Equation as E
 dpg.create_context()
 W, H = 600, 400
 
+def Font():
+    with dpg.font_registry():
+            return dpg.add_font("Merich.otf", 15)
+
+
 EQU = {
 "Mass Gravity Weight": lambda One, Two, Three: E.Mass_Gravity_Weight_3(One, Two, Three),
 
@@ -13,6 +18,8 @@ EQU = {
 
 "Distance Velocity Time": lambda One, Two, Three: E.Distance_Velocity_Time_3(One, Two, Three)
 }
+
+
 
 """ (|----------------------------------------------------|)"""
 choice = {}
@@ -57,13 +64,10 @@ def pes():
     for check in range(len(Le)):
         Val.append(dpg.get_value(Le[check]))
         try:
-            Val[check] = int(Val[check])
+            Val[check] = float(Val[check])
         except ValueError:
             Val[check] = None
-        
-    print(dpg.get_value(Tr))
-    print(Val)
-    
+
     if len(Val) == 3:
         Res = EQU[dpg.get_value(Tr)](Val[0], Val[1], Val[2])
     elif len(Val) == 4:
@@ -71,7 +75,7 @@ def pes():
 
     Text.append(Res)
     if type(Res) == str:
-        dpg.add_text(f"{Res}", tag=f"{Res}", before=RES, pos=[dpg.get_item_pos(RES)[0] - len(Res), dpg.get_item_pos(RES)[1] - 30])
+        dpg.add_text(f"{Res}", tag=f"{Res}", before=RES, pos=[dpg.get_item_pos(RES)[0] - len(Res), dpg.get_item_pos(RES)[1] - 30],)
     else:
         dpg.set_value(RES, f"{Res[0]} : {Res[1]}")
 
@@ -105,8 +109,8 @@ with dpg.window(label="Menu", tag="Menu"):
     dpg.add_text("*leave blank the field that is unknown", tag="UN", wrap=len("leave") * 16)
     dpg.add_text("----")
 
-    RES = dpg.add_text("Unknow : Quantity", 
-                 pos=[W / 4 + len("Unknow : Quantity") * 5, H / 1.5])
+    RES = dpg.add_text("Unknow : Quantity", pos=[W / 4 + len("Unknow") * 14, H / 1.5])
+    dpg.bind_item_font(RES, Font())
      
     
 dpg.create_viewport(title='Menu', width=W, height=H)
