@@ -54,7 +54,7 @@ def Gravitational_Potential_Energy_3(Height: float, Weight: float, Joul: float):
         return "Need more than one known element"
 
 
-def Gravitational_Potential_Energy_WITH_MASS_4(Height: float, MASS: float, Gravity: float, Joul: float):
+def Gravitational_Potential_Energy_WITH_MASS_4(Height: float, MASS: float, Gravity: float, Joul: float = None):
     """ 
     Système International d'unités (SI):
     -

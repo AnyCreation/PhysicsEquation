@@ -1,9 +1,19 @@
 import dearpygui.dearpygui as dpg
-import Equation
+import Equation as E
 from Qua import *
 
 dpg.create_context()
 W, H = 600, 400
+
+EQU = {
+"Mass Gravity Weight": lambda One, Two, Three: E.Mass_Gravity_Weight_3(One, Two, Three),
+
+"Gravitational Potential Energy": lambda One, Two, Three: E.Gravitational_Potential_Energy_3(One, Two, Three),
+
+"Gravitational Potential Energy WITH MASS": lambda One, Two, Three, Four: E.Gravitational_Potential_Energy_WITH_MASS_4(One, Two, Three, Four),
+
+"Distance Velocity Time": lambda One, Two, Three: E.Distance_Velocity_Time_3(One, Two, Three)
+}
 
 """ (|----------------------------------------------------|)"""
 choice = {}
@@ -41,7 +51,6 @@ Text = []
 def pes():
     Val = []
     Le = choice[dpg.get_value(Tr)][1]
-    print(Le, dpg.get_value(Tr))
     for Delete in Text:
          if dpg.does_item_exist(Delete):
            dpg.delete_item(Delete)
@@ -52,16 +61,20 @@ def pes():
             Val[check] = int(Val[check])
         except ValueError:
             Val[check] = None
+        
+    print(dpg.get_value(Tr))
+    print(Val)
     
-    Res = Equation.Mass_Gravity_Weight_3(Val[0], Val[1], Val[2])
+    if len(Val) == 3:
+        Res = EQU[dpg.get_value(Tr)](Val[0], Val[1], Val[2])
+    elif len(Val) == 4:
+        Res = EQU[dpg.get_value(Tr)](Val[0], Val[1], Val[2], Val[3])
+
     Text.append(Res)
     if type(Res) == str:
-        dpg.add_text(f"{Res}", tag=f"{Res}", pos=[(W - len(Res)) / 4,  H / 2], parent="Menu")
+        dpg.add_text(f"{Res}", tag=f"{Res}", before=RES, pos=[dpg.get_item_pos(RES)[0] - len(Res), dpg.get_item_pos(RES)[1] - 30])
     else:
-        dpg.add_text(f" {Equation.Mass_Gravity_Weight_3(Val[0], Val[1], Val[2])[0]} - {Equation.Mass_Gravity_Weight_3(Val[0], Val[1], Val[2])[1]}", 
-                     tag=f"{Res}", 
-                     pos=[(W - len(Equation.Mass_Gravity_Weight_3(Val[0], Val[1], Val[2])[0])) / 4,  H / 2], 
-                     parent="Menu")
+        dpg.set_value(RES, f"{Res[0]} : {Res[1]}")
 
     
 
@@ -73,11 +86,13 @@ def count(sender):
          if dpg.does_item_exist(Delete):
            dpg.delete_item(Delete)
 
-    for i in range(choice[dpg.get_value(sender)][0]):
-        dpg.add_input_text(label=f"{choice[dpg.get_value(Tr)][1][i]}", tag=f"{choice[dpg.get_value(Tr)][1][i]}", 
-                           parent="Menu", default_value="Nothig", decimal=True,
-                           pos=[(W / 2) - (Longer_str * 5), 40 + (i * 35)], 
-                           width=Longer_str * 8)
+    for i in range(choice[dpg.get_value(Tr)][0]):
+
+        dpg.add_input_text(label=f"{choice[dpg.get_value(Tr)][1][i]}", 
+                           tag=f"{choice[dpg.get_value(Tr)][1][i]}", 
+                           decimal=True, pos=[(W / 2) - (Longer_str * 5), 40 + (i * 35)],  # Pos
+                           width=Longer_str * 8,parent="Menu")
+        
         all_types.append(str(choice[dpg.get_value(Tr)][1][i]))
 
     dpg.add_button(label="Result", tag="Res", parent="Menu", 
@@ -87,6 +102,12 @@ def count(sender):
 
 with dpg.window(label="Menu", tag="Menu"): 
     dpg.add_combo(list(choice), default_value="Choice", pos=[(W / 2) - (Longer_str * 5), 10], width=Longer_str * 10, callback=count)
+
+    dpg.add_text("*leave blank the field that is unknown", tag="UN", wrap=len("leave") * 16)
+    dpg.add_text("----")
+
+    RES = dpg.add_text("Unknow : Quantity", 
+                 pos=[W / 4 + len("Unknow : Quantity") * 5, H / 1.5])
      
     
 dpg.create_viewport(title='Menu', width=W, height=H)
