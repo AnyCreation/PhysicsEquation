@@ -1,6 +1,5 @@
 import dearpygui.dearpygui as dpg
 import Equation as E
-from Qua import *
 
 dpg.create_context()
 W, H = 600, 400
