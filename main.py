@@ -2,7 +2,7 @@ import dearpygui.dearpygui as dpg
 import Equation as E
 
 dpg.create_context()
-W, H = 600, 400
+W, H = 600, 600
 
 def Font():
     with dpg.font_registry():
@@ -19,6 +19,8 @@ EQU = {
 "Distance Velocity Time": lambda One, Two, Three: E.Distance_Velocity_Time_3(One, Two, Three),
 
 "Constant Speed": lambda One, Two, Three: E.Constant_Speed_3(One, Two, Three),
+
+"Lever Arm": lambda One, Two, Three, Four: E.Lever_Arm_4(One, Two, Three, Four)
 }
 
 
@@ -80,7 +82,8 @@ def pes():
     if type(Res) == str:
         dpg.add_text(f"{Res}", tag=f"{Res}", before=RES, pos=[dpg.get_item_pos(RES)[0] - len(Res), dpg.get_item_pos(RES)[1] - 30],)
     else:
-        dpg.set_value(RES, f"{Res[0]} : {Res[1]}")
+        dpg.set_value(RES, f"{Res[1]}")
+        dpg.set_value(Name, f"{Res[0]}")
 
     
 
@@ -107,11 +110,13 @@ with dpg.window(label="Menu", tag="Menu"):
     dpg.add_text("*leave blank the field that is unknown", tag="UN", wrap=len("leave") * 16)
     dpg.add_text("----")
 
-    RES = dpg.add_text("Unknow : Quantity", pos=[W / 4 + len("Unknow") * 14, H / 1.5])
-    dpg.bind_item_font(RES, Font())
+
+    Name = dpg.add_text("Unknow", pos=[W / 4 + len("Unknow") * 14, H / 1.5])
+    dpg.add_text(" : ", pos=[W / 4 + len("Unknow") * 14, H / 1.5 + 20])
+    RES = dpg.add_text("Quantity", pos=[W / 4 + len("Unknow") * 14, H / 1.5 + 40])
     
     dpg.add_button(label="Result", tag="Res", parent="Menu", 
-                   pos=[W / 2 - (len("Result") * 5), (H / 1.5) + 50], width=len("Result") * 10,
+                   pos=[W / 2 - (len("Result") * 5), (H / 1.5) + 80], width=len("Result") * 10,
                    callback=pes)
      
     
